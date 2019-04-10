@@ -54,6 +54,28 @@ class BinaryTree
     return nil
   end
 
+  def depth_first_search(value)
+    #depth first with stack
+    return if @root.nil?
+    stack = [@root]
+    until stack.empty?
+      current = stack.pop
+      return current if current.value = value
+      stack.push(current.left) if current.left
+      stack.push(current.right) if current.right
+    end
+  end
+
+  def dfs_rec(node,value)
+    return if @root.nil?
+    if node.value == value
+      return node
+    else
+      dfs_rec(node.left, value)
+      dfs_rec(node.right,value)
+    end
+  end
+
 
 end
 
